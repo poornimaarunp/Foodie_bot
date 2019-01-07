@@ -542,6 +542,90 @@
             "entity": "location"
           }
         ]
+      },
+      {
+        "text": "Lesser than Rs. 300",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 16,
+            "end": 19,
+            "value": "300",
+            "entity": "minbudget"
+          }
+        ]
+      },
+      {
+        "text": "Rs. 300 to 700",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 4,
+            "end": 7,
+            "value": "300",
+            "entity": "minbudget"
+          },
+          {
+            "start": 11,
+            "end": 14,
+            "value": "700",
+            "entity": "maxbudget"
+          }
+        ]
+      },
+      {
+        "text": "More than 700",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 10,
+            "end": 13,
+            "value": "700",
+            "entity": "maxbudget"
+          }
+        ]
+      },
+      {
+        "text": "300-700 range",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "value": "300",
+            "entity": "minbudget"
+          },
+          {
+            "start": 4,
+            "end": 7,
+            "value": "700",
+            "entity": "maxbudget"
+          }
+        ]
+      },
+      {
+        "text": ">700",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 1,
+            "end": 4,
+            "value": "700",
+            "entity": "budget"
+          }
+        ]
+      },
+      {
+        "text": "<300",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 1,
+            "end": 4,
+            "value": "300",
+            "entity": "budget"
+          }
+        ]
       }
     ]
   }
