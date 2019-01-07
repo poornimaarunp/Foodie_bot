@@ -8,6 +8,10 @@
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
+    - utter_ask_budget
+* restaurant_search{"minbudget": "300","maxbudget": "700"}
+    - slot{"minbudget": "300"}
+    - slot{"maxbudget": "700"}
     - action_restaurant
     - slot{"location": "delhi"}
     - utter_goodbye
@@ -23,6 +27,9 @@
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "North Indian"}
     - slot{"cuisine": "North Indian"}
+    - utter_ask_budget
+* restaurant_search{"minbudget": "700"}
+    - slot{"minbudget": "700"}
     - action_restaurant
     - utter_goodbye
 
@@ -36,6 +43,9 @@
 	- utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
+    - utter_ask_budget
+* restaurant_search{"maxbudget": "300"}
+    - slot{"maxbudget": "300"}
     - action_restaurant
 * goodbye
     - utter_goodbye
@@ -50,6 +60,9 @@
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
+    - utter_ask_budget
+* restaurant_search{"minbudget": "700"}
+    - slot{"minbudget": "700"}
     - action_restaurant
     - slot{"location": "delhi"}
     - export
@@ -63,6 +76,9 @@
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
+    - utter_ask_budget
+* restaurant_search{"minbudget": "700"}
+    - slot{"minbudget": "700"}
     - action_restaurant
 * affirm
     - utter_goodbye

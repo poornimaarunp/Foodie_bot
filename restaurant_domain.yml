@@ -3,10 +3,16 @@ slots:
     type: text
   cuisine:
     type: text
+  minbudget:
+    type: text
+  maxbudget:
+    type: text
 
 entities:
 - location
 - cuisine
+- minbudget
+- maxbudget
 
 intents:
  - greet
@@ -42,6 +48,15 @@ templates:
     - "how can I help you?"
   utter_ask_location:
     - "In what location?"
+  utter_ask_budget: 
+    - text: "What's the average budget for two people?"
+      buttons:
+      - title: "Lesser than Rs. 300"
+        payload: "300"
+      - title: "Rs. 300 to 700"
+        payload: "700"
+      - title: "More than 700"
+        payload: "700"
 
 actions:
 - utter_greet
@@ -50,4 +65,5 @@ actions:
 - utter_ask_howcanhelp
 - utter_ask_location
 - utter_ask_cuisine
+- utter_ask_budget
 - actions.ActionSearchRestaurants
