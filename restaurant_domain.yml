@@ -56,8 +56,7 @@ templates:
       - title: "Rs. 300 to 700"
         payload: "300-700"
       - title: "More than 700"
-        payload: "700"
-
+        payload: ">700"
 
 actions:
 - utter_greet
