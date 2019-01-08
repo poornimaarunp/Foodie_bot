@@ -38,8 +38,12 @@ templates:
       buttons:
       - title: "Chinese"
         payload: "Chinese"
+      - title: "Mexican"
+        payload: "Mexican"
       - title: "Italian"
         payload: "Italian"
+      - title: "American"
+        payload: "American"
       - title: "South Indian"
         payload: "South Indian"
       - title: "North Indian"
@@ -57,6 +61,11 @@ templates:
         payload: "300-700"
       - title: "More than 700"
         payload: ">700"
+  utter_wrong_city:
+    - "We don't operate in that area yet. Can you please specify some other location"
+  utter_wrong_cuisine:
+    - "We don't offer the requested cuisine. Please select from the available options"  
+
 
 actions:
 - utter_greet
@@ -66,4 +75,6 @@ actions:
 - utter_ask_location
 - utter_ask_cuisine
 - utter_ask_budget
+- actions.ActionValidateCuisine
+- actions.ActionValidateLocation
 - actions.ActionSearchRestaurants

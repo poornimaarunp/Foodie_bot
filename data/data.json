@@ -25,6 +25,39 @@
           "veggie",
           "vegg"
         ]
+      },
+      {
+        "value": "ahmedabad",
+        "synonyms": ["ahemdabad"]
+      },
+      {
+        "value": "bangalore",
+        "synonyms": ["bengalore","bengaluru"]
+      },
+      {
+        "value": "chennai",
+        "synonyms": ["madras"]
+      },
+      {
+        "value": "hyderabad",
+        "synonyms": ["hydrabad"]
+      },
+      {
+        "value": "kolkata",
+        "synonyms": ["calcutta"]
+      },
+      {
+        "value": "mumbai",
+        "synonyms": ["bombay"]
+      },
+      {
+        "value": "noida",
+        "synonyms": ["gautam budh nagar"]
+      },
+      
+      {
+        "value": "delhi",
+        "synonyms": ["new delhi"]
       }
     ],
     "common_examples": [
