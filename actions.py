@@ -7,6 +7,48 @@ from rasa_core.events import SlotSet
 import zomatopy
 import json
 
+class ActionValidateLocation(Action):
+	def name(self):
+		return 'action_validate_location'
+
+	def run(self, dispatcher, tracker, domain):
+		loc=tracker.get_slot('location')
+		cuisine=tracker.get_slot('cuisine')
+		tier1=['ahmedabad','bangalore','chennai','delhi','hyderabad','kolkata','mumbai','pune','agra','ajmer'
+               ,'aligarh','amravati','amritsar','asansol','aurangabad','bareilly', 'belgaum', 'bhavnagar', 'bhiwandi','bhopal',
+               'bhubaneswar', 'bikaner','bokaro steel city', 'chandigarh', 'coimbatore', 'cuttack', 'dehradun', 'dhanbad', 
+               'durg-bhilai nagar', 'durgapur','erode','faridabad', 'firozabad', 'ghaziabad', 'gorakhpur', 'gulbarga', 'guntur', 'gurgaon',
+               'guwahati','gwalior','hubli-dharwad','indore', 'jabalpur', 'jaipur', 'jalandhar', 'jammu', 'jamnagar', 'jamshedpur', 
+               'jhansi', 'jodhpur','kannur', 'kanpur','kakinada', 'kochi', 'kottayam', 'kolhapur', 'kollam', 'kota', 'kozhikode',
+               'kurnool', 'lucknow','ludhiana', 'madurai','malappuram', 'mathura', 'goa', 'mangalore', 'meerut', 'moradabad', 'mysore',
+               'nagpur', 'nanded','nashik', 'nellore', 'noida','palakkad', 'patna', 'pondicherry', 'prayagraj', 'raipur', 'rajkot',
+               'rajahmundry', 'ranchi', 'rourkela', 'salem', 'sangli','siliguri', 'solapur', 'srinagar', 'sultanpur', 'surat',
+               'thiruvananthapuram','thrissur', 'tiruchirappalli', 'tirunelveli','tiruppur', 'ujjain', 'bijapur', 'vadodara', 'varanasi',
+               'vasai-virar city','vijayawada', 'visakhapatnam', 'warangal','bombay','madras','calcutta','gautam budh nagar',
+               'new delhi','hydrabad','bengaluru','bengalore','ahemdabad'] 
+		while loc not in tier1:
+			dispatcher.utter_template("utter_wrong_city",tracker)
+			SlotSet('location',None)
+			loc = input("Select from the another city in which we operate: ")    
+			break
+			SlotSet('location',loc)                
+		return [SlotSet('location',loc)]
+
+class ActionValidateCuisine(Action):
+	def name(self):
+		return 'action_validate_cuisine'
+
+	def run(self, dispatcher, tracker, domain):
+		cuisine=tracker.get_slot('cuisine')
+		cuisine_list = ['american','italian','chinese','mexican','north indian','south indian']
+		while cuisine not in cuisine_list:      
+			dispatcher.utter_template("utter_wrong_cuisine",tracker) 
+			SlotSet('cuisine',None)
+			cuisine = input("Select from the available options:  ")    
+			break
+			SlotSet('cuisine',cusine)
+		return [SlotSet('cuisine',cuisine)]
+
 class ActionSearchRestaurants(Action):
 	def name(self):
 		return 'action_restaurant'
@@ -20,7 +62,7 @@ class ActionSearchRestaurants(Action):
 		d1 = json.loads(location_detail)
 		lat=d1["location_suggestions"][0]["latitude"]
 		lon=d1["location_suggestions"][0]["longitude"]
-		cuisines_dict={'bakery':5,'chinese':25,'cafe':30,'italian':55,'biryani':7,'north indian':50,'south indian':85}
+		cuisines_dict={'american':1,'chinese':25,'mexican':73,'italian':55,'north_indian':50,'south_indian':85}
 		results=zomato.restaurant_search("", lat, lon, str(cuisines_dict.get(cuisine)), 5)
 		d = json.loads(results)
 		response=""
@@ -31,5 +73,6 @@ class ActionSearchRestaurants(Action):
 				response=response+ "Found "+ restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address']+"\n"
 		
 		dispatcher.utter_message("-----"+response)
-		return [SlotSet('location',loc)]
-
+		SlotSet('location',None)
+		SlotSet('cuisine',None)
+		return [SlotSet('location',None),SlotSet('cuisine',None)]
