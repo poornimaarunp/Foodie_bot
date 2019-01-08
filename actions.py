@@ -7,15 +7,19 @@ from rasa_core.events import SlotSet
 import zomatopy
 import json
 
+
 class ActionSearchRestaurants(Action):
+	response = ""
 	def name(self):
 		return 'action_restaurant'
 		
-	def run(self, dispatcher, tracker, domain):
+	def run(self, dispatcher, tracker, domain, maxcount=5):
 		config={ "user_key":"6ce88a5ec1419e335afa1c7f92f4b739"}
 		zomato = zomatopy.initialize_app(config)
 		loc = tracker.get_slot('location')
 		cuisine = tracker.get_slot('cuisine')
+		minbudget = tracker.get_slot('minbudget')
+		maxbudget = tracker.get_slot('maxbudget')
 		location_detail=zomato.get_location(loc, 1)
 		d1 = json.loads(location_detail)
 		lat=d1["location_suggestions"][0]["latitude"]
@@ -31,5 +35,6 @@ class ActionSearchRestaurants(Action):
 				response=response+ "Found "+ restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address']+"\n"
 		
 		dispatcher.utter_message("-----"+response)
+
 		return [SlotSet('location',loc)]
 
