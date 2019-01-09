@@ -8,6 +8,11 @@ import zomatopy
 import json
 import sys
 
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.message import EmailMessage
+
 class ActionValidateLocation(Action):
 	def name(self):
 		return 'action_validate_location'
@@ -16,21 +21,21 @@ class ActionValidateLocation(Action):
 		location = tracker.get_slot('location')
 		tier1=['ahmedabad','bangalore','chennai','delhi','hyderabad','kolkata','mumbai','pune','agra','ajmer'
                ,'aligarh','amravati','amritsar','asansol','aurangabad','bareilly', 'belgaum', 'bhavnagar', 'bhiwandi','bhopal',
-               'bhubaneswar', 'bikaner','bokaro steel city', 'chandigarh', 'coimbatore', 'cuttack', 'dehradun', 'dhanbad', 
+               'bhubaneswar', 'bikaner','bokaro steel city', 'chandigarh', 'coimbatore', 'cuttack', 'dehradun', 'dhanbad',
                'durg-bhilai nagar', 'durgapur','erode','faridabad', 'firozabad', 'ghaziabad', 'gorakhpur', 'gulbarga', 'guntur', 'gurgaon',
-               'guwahati','gwalior','hubli-dharwad','indore', 'jabalpur', 'jaipur', 'jalandhar', 'jammu', 'jamnagar', 'jamshedpur', 
+               'guwahati','gwalior','hubli-dharwad','indore', 'jabalpur', 'jaipur', 'jalandhar', 'jammu', 'jamnagar', 'jamshedpur',
                'jhansi', 'jodhpur','kannur', 'kanpur','kakinada', 'kochi', 'kottayam', 'kolhapur', 'kollam', 'kota', 'kozhikode',
                'kurnool', 'lucknow','ludhiana', 'madurai','malappuram', 'mathura', 'goa', 'mangalore', 'meerut', 'moradabad', 'mysore',
                'nagpur', 'nanded','nashik', 'nellore', 'noida','palakkad', 'patna', 'pondicherry', 'prayagraj', 'raipur', 'rajkot',
                'rajahmundry', 'ranchi', 'rourkela', 'salem', 'sangli','siliguri', 'solapur', 'srinagar', 'sultanpur', 'surat',
                'thiruvananthapuram','thrissur', 'tiruchirappalli', 'tirunelveli','tiruppur', 'ujjain', 'bijapur', 'vadodara', 'varanasi',
                'vasai-virar city','vijayawada', 'visakhapatnam', 'warangal','bombay','madras','calcutta','gautam budh nagar',
-               'new delhi','hydrabad','bengaluru','bengalore','ahemdabad'] 
-		
+               'new delhi','hydrabad','bengaluru','bengalore','ahemdabad']
+
 		if location not in tier1:
 			dispatcher.utter_template("utter_wrong_city",tracker)
 			location=None
-		
+
 		return [SlotSet('location',location)]
 
 class ActionValidateCuisine(Action):
@@ -40,10 +45,10 @@ class ActionValidateCuisine(Action):
 	def run(self, dispatcher, tracker, domain):
 		cuisine=tracker.get_slot('cuisine')
 		cuisine_list = ['american','italian','chinese','mexican','north indian','south indian']
-		while cuisine not in cuisine_list:      
-			dispatcher.utter_template("utter_wrong_cuisine",tracker) 
+		while cuisine not in cuisine_list:
+			dispatcher.utter_template("utter_wrong_cuisine",tracker)
 			SlotSet('cuisine',None)
-			cuisine = input("Select from the available options:  ")    
+			cuisine = input("Select from the available options:  ")
 			break
 			SlotSet('cuisine',cuisine)
 		return [SlotSet('cuisine',cuisine)]
@@ -52,10 +57,10 @@ class ActionSearchRestaurants(Action):
 	response = ""
 	def name(self):
 		return 'action_restaurant'
-		
+
 	def run(self, dispatcher, tracker, domain, maxcount=5):
 		#config={ "user_key":"41ddf20238cafa7413e2ae7c9c6ce83d"} #mykey
-		config={ "user_key":"6ce88a5ec1419e335afa1c7f92f4b739"}
+		config={ "user_key":"4b15397292c01e6dbf85074d0952d14b"}
 		zomato = zomatopy.initialize_app(config)
 		loc = tracker.get_slot('location')
 		cuisine = tracker.get_slot('cuisine')
@@ -93,7 +98,7 @@ class ActionSearchRestaurants(Action):
 							response=response+ "Found "+ restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address']+". And the average price for two people here is: Rs."+str(price)+"\n"
 							#dispatcher.utter_message("Found "+ restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address']+" with budget Rs."+str(price)+"\n")
 							count = count + 1
-						else: 
+						else:
 							#print('dint go inside any loop '+str(price))
 							pass
 
@@ -103,7 +108,7 @@ class ActionSearchRestaurants(Action):
 					except:
 						#print("Oops!",sys.exc_info(),"occured.")
 						pass
-			
+
 			if start<500:
 				start=start + 20
 			else:
@@ -114,3 +119,25 @@ class ActionSearchRestaurants(Action):
 		#dispatcher.utter_message("-----\n")
 		return [SlotSet('location',loc)]
 
+
+class ActionSendEmail(Action):
+	def name(self):
+		return 'action_email'
+
+	def run(self, dispatcher, tracker, domain):
+		dispatcher.utter_message("Inside email action")
+		# mailid = tracker.get_slot('emailid')
+		# dispatcher.utter_message("email id parsed = "+mailid)
+		smtpServer = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+		emailContent = MIMEMultipart('alternative')
+		messageBody = "<h3>restaurant search results from chatbot</h3>"
+		emailContent['Subject'] = 'Zomato search results'
+		emailContent['From'] = 'chatbotemailer123@gmail.com'
+		emailContent['To'] = 'yugadeepa.c@gmail.com'
+		emailContent.attach(MIMEText(messageBody,'html'))
+		smtpServer.ehlo()
+		smtpServer.login('chatbotemailer123@gmail.com','learn.123')
+		smtpServer.send_message(emailContent)
+		smtpServer.quit()
+		dispatcher.utter_message("Sent email successfully to "+mailid)
+		return [SlotSet('emailid',mail)]

@@ -6,6 +6,10 @@
         "pattern": "[0-9]{5}"
       },
       {
+        "name": "emailid",
+        "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$"
+      },
+      {
         "name": "greet",
         "pattern": "hey[^\\s]*"
       }
@@ -54,7 +58,7 @@
         "value": "noida",
         "synonyms": ["gautam budh nagar"]
       },
-      
+
       {
         "value": "delhi",
         "synonyms": ["new delhi"]
@@ -657,6 +661,72 @@
             "end": 4,
             "value": "300",
             "entity": "maxbudget"
+          }
+        ]
+      },
+      {
+        "text": "No",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "No thanks",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "Dont send",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "Don't send",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "Not required",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "no",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "yes send to test@gmail.com",
+        "intent": "send_email",
+        "entities": [
+          {
+            "start": 12,
+            "end": 25,
+            "value": "test@gmail.com",
+            "entity": "emailid"
+          }
+        ]
+      },
+      {
+        "text": "test1@gmail.com",
+        "intent": "send_email",
+        "entities": [
+          {
+            "start": 0,
+            "end": 15,
+            "value": "test5@gmail.com",
+            "entity": "emailid"
+          }
+        ]
+      },
+      {
+        "text": "forward to test1@gmail.com",
+        "intent": "send_email",
+        "entities": [
+          {
+            "start": 12,
+            "end": 26,
+            "value": "test5@gmail.com",
+            "entity": "emailid"
           }
         ]
       }
