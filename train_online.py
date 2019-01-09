@@ -13,7 +13,8 @@ from rasa_core.policies.memoization import MemoizationPolicy
 from rasa_core.interpreter import RasaNLUInterpreter
 
 logger = logging.getLogger(__name__)
-
+import warnings
+warnings.filterwarnings("ignore")
 
 def run_restaurant_online(input_channel, interpreter,
                           domain_file="restaurant_domain.yml",
