@@ -7,12 +7,15 @@ slots:
     type: text
   maxbudget:
     type: text
+  emailid:
+    type: text
 
 entities:
 - location
 - cuisine
 - minbudget
 - maxbudget
+- emailid
 
 intents:
  - greet
@@ -21,7 +24,7 @@ intents:
  - goodbye
  - thankyou
  - restaurant_search
-
+ - send_email
 
 templates:
   utter_greet:
@@ -33,7 +36,7 @@ templates:
     - "Bye-bye"
   utter_default:
     - "default message"
-  utter_ask_cuisine: 
+  utter_ask_cuisine:
     - text: "what kind of cuisine would you like?"
       buttons:
       - title: "Chinese"
@@ -52,7 +55,7 @@ templates:
     - "how can I help you?"
   utter_ask_location:
     - "In what location?"
-  utter_ask_budget: 
+  utter_ask_budget:
     - text: "What's the average budget for two people?"
       buttons:
       - title: "Lesser than Rs. 300"
@@ -64,8 +67,18 @@ templates:
   utter_wrong_city:
     - "We don't operate in that area yet. Can you please specify some other location"
   utter_wrong_cuisine:
-    - "We don't offer the requested cuisine. Please select from the available options"  
-
+    - "We don't offer the requested cuisine. Please select from the available options"
+  utter_ask_email_preference:
+    - "Shall I forward you this information in an email?"
+    - "Would you like to send this information in an email?"
+    - "Would you prefer sending this information to your email?"
+  utter_ask_emailid:
+    - "To what email id should I send it to?"
+    - "Please share your email address"
+  utter_emailed_you:
+    - "This information has been emailed to you."
+  utter_invalid_emailid:
+    - "Please share a valid email"
 
 actions:
 - utter_greet
@@ -78,3 +91,7 @@ actions:
 - actions.ActionValidateCuisine
 - actions.ActionValidateLocation
 - actions.ActionSearchRestaurants
+- utter_ask_email_preference
+- utter_ask_emailid
+- actions.ActionSendEmail
+- utter_emailed_you
