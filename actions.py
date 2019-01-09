@@ -126,8 +126,8 @@ class ActionSendEmail(Action):
 
 	def run(self, dispatcher, tracker, domain):
 		dispatcher.utter_message("Inside email action")
-		mailid = tracker.get_slot('emailid')
-		dispatcher.utter_message("email id parsed = "+mailid)
+		# mailid = tracker.get_slot('emailid')
+		# dispatcher.utter_message("email id parsed = "+mailid)
 		smtpServer = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 		emailContent = MIMEMultipart('alternative')
 		messageBody = "<h3>restaurant search results from chatbot</h3>"
