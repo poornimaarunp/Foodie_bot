@@ -11,7 +11,9 @@ from rasa_nlu.config import RasaNLUModelConfig
 from rasa_nlu.model import Trainer
 from rasa_nlu.model import Metadata, Interpreter
 import json
-app = Flask(__name__)      
+app = Flask(__name__)  
+import warnings
+warnings.filterwarnings("ignore")    
 
 @app.route('/')
 def index():
