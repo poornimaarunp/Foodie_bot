@@ -729,6 +729,7 @@
             "value": "test@gmail.com",
             "entity": "emailid"
           }
+        ]
         },
         {
         "text": "> 500 < 1200",
