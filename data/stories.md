@@ -19,6 +19,12 @@
     - slot{"maxbudget": "700"}
     - action_restaurant
     - slot{"location": "delhi"}
+    - utter_ask_email_preference
+* affirm
+    - utter_ask_emailid
+* send_email{"emailid": "yugadeepa.c@gmail.com"}
+    - action_email
+    - utter_emailed_you
     - utter_goodbye
     - export
 
@@ -38,6 +44,12 @@
 * restaurant_search{"minbudget": "700"}
     - slot{"minbudget": "700"}
     - action_restaurant
+    - utter_ask_email_preference
+* affirm
+    - utter_ask_emailid
+* send_email{"emailid": "yugadeepa.c@gmail.com"}
+    - action_email
+    - utter_emailed_you
     - utter_goodbye
 
 ## Generated Story 3320800183399695936
@@ -56,6 +68,12 @@
 * restaurant_search{"maxbudget": "300"}
     - slot{"maxbudget": "300"}
     - action_restaurant
+    - utter_ask_email_preference
+* affirm
+    - utter_ask_emailid
+* send_email{"emailid": "yugadeepa.c@gmail.com"}
+    - action_email
+    - utter_emailed_you
 * goodbye
     - utter_goodbye
 
@@ -76,6 +94,12 @@
     - slot{"minbudget": "700"}
     - action_restaurant
     - slot{"location": "delhi"}
+    - utter_ask_email_preference
+* affirm
+    - utter_ask_emailid
+* send_email{"emailid": "yugadeepa.c@gmail.com"}
+    - action_email
+    - utter_emailed_you
     - export
 
 
@@ -93,6 +117,12 @@
 * restaurant_search{"minbudget": "700"}
     - slot{"minbudget": "700"}
     - action_restaurant
+    - utter_ask_email_preference
+* affirm
+    - utter_ask_emailid
+* send_email{"emailid": "yugadeepa.c@gmail.com"}
+    - action_email
+    - utter_emailed_you
 * affirm
     - utter_goodbye
     - export
@@ -125,4 +155,7 @@
     - slot{"maxbudget": "700"}
     - action_restaurant
     - slot{"location": "pune"}
+    - utter_ask_email_preference
+* deny
+    - utter_goodbye
     - export
