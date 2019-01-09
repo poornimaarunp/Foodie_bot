@@ -74,7 +74,8 @@ class ActionSearchRestaurants(Action):
 			results=zomato.restaurant_search_paginated("", lat, lon, str(cuisines_dict.get(cuisine.lower())), start, 20)
 			d = json.loads(results)
 			if d['results_found'] == 0:
-				response= "no results"
+				#response= "no results"
+				pass
 			else:
 				for restaurant in d['restaurants']:
 					try:
@@ -107,7 +108,8 @@ class ActionSearchRestaurants(Action):
 				start=start + 20
 			else:
 				search=False
-		dispatcher.utter_message("Showing you top rated restaurants:\n"+response)
+		if len(response) > 1: dispatcher.utter_message("Showing you top rated restaurants:\n"+response)
+		else: dispatcher.utter_message("Sorry, we couldnt find restaurants that match your search.")
 		self.response = response
 		#dispatcher.utter_message("-----\n")
 		return [SlotSet('location',loc)]

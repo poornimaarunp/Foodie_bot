@@ -96,3 +96,33 @@
 * affirm
     - utter_goodbye
     - export
+
+## Generated Story -7060460724450246491
+* greet
+    - utter_greet
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_location
+* restaurant_search
+    - action_validate_location
+    - slot{"location": null}
+* restaurant_search
+    - action_validate_location
+    - slot{"location": null}
+* restaurant_search{"location": "italy"}
+    - slot{"location": "italy"}
+    - action_validate_location
+    - slot{"location": null}
+* restaurant_search
+    - action_validate_location
+    - slot{"location": null}
+* restaurant_search{"location": "pune"}
+    - slot{"location": "pune"}
+    - action_validate_location
+    - slot{"location": "pune"}
+    - utter_ask_budget
+* restaurant_search{"maxbudget": "700"}
+    - slot{"maxbudget": "700"}
+    - action_restaurant
+    - slot{"location": "pune"}
+    - export
