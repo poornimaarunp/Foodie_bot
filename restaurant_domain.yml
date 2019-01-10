@@ -83,9 +83,11 @@ templates:
     - "This information has been emailed to you."
   utter_invalid_emailid:
     - "Please share a valid email"
+    - "Email id given is not valid. Please enter a valid email"
   utter_wrong_budget:
     - "We need valid budget details for better results. Can you please specify the budget"
     - "We are not able to understand the budget. Can you please choose from available options or valid budget"
+
 
 actions:
 - utter_greet

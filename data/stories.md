@@ -160,7 +160,125 @@
     - utter_goodbye
     - export
 
-## Generated Story 9200166762348421103
+## Generated Story 356354634563456356
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "delhi"}
+    - slot{"location": "delhi"}
+    - action_validate_location
+    - slot{"location": "delhi"}
+    - slot{"cuisine": null}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - action_validate_cuisine
+    - slot{"cuisine": "chinese"}
+    - utter_ask_budget
+* restaurant_search{"minbudget": "300","maxbudget": "700"}
+    - slot{"minbudget": "300"}
+    - slot{"maxbudget": "700"}
+    - action_restaurant
+    - slot{"location": "delhi"}
+    - utter_ask_email_preference
+* send_email{"emailid": "yugadeepa.c@gmail.com"}
+    - action_email
+    - utter_emailed_you
+    - utter_goodbye
+    - export
+
+## Generated Story 567857863456356357
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "delhi"}
+    - slot{"location": "delhi"}
+    - action_validate_location
+    - slot{"location": "delhi"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "North Indian"}
+    - slot{"cuisine": "North Indian"}
+    - utter_ask_budget
+* restaurant_search{"minbudget": "700"}
+    - slot{"minbudget": "700"}
+    - action_restaurant
+    - utter_ask_email_preference
+* send_email{"emailid": "yugadeepa.c@gmail.com"}
+    - action_email
+    - utter_emailed_you
+    - utter_goodbye
+    
+## Generated Story 936275937384748920
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "italy"}
+    - slot{"location": "italy"}
+    - action_validate_location
+    - slot{"location": "delhi"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_budget
+* restaurant_search{"maxbudget": "300"}
+    - slot{"maxbudget": "300"}
+    - action_restaurant
+    - utter_ask_email_preference
+* send_email{"emailid": "yugadeepa.c@gmail.com"}
+    - action_email
+    - utter_emailed_you
+* goodbye
+    - utter_goodbye
+
+## Generated Story -677747382949392745
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "delhi"}
+    - slot{"location": "delhi"}
+    - action_validate_location
+    - slot{"location": "delhi"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_budget
+* restaurant_search{"minbudget": "700"}
+    - slot{"minbudget": "700"}
+    - action_restaurant
+    - slot{"location": "delhi"}
+    - utter_ask_email_preference
+* send_email{"emailid": "yugadeepa.c@gmail.com"}
+    - action_email
+    - utter_emailed_you
+    - export
+
+## Generated Story 390287473924738294
+* greet
+    - utter_greet
+* restaurant_search{"location": "delhi"}
+    - slot{"location": "delhi"}
+    - action_validate_location
+    - slot{"location": "delhi"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_budget
+* restaurant_search{"minbudget": "700"}
+    - slot{"minbudget": "700"}
+    - action_restaurant
+    - utter_ask_email_preference
+* send_email{"emailid": "yugadeepa.c@gmail.com"}
+    - action_email
+    - utter_emailed_you
+* affirm
+    - utter_goodbye
+    - export
+    
+ ## Generated Story 9200166762348421103
 * greet
     - utter_greet
 * restaurant_search
