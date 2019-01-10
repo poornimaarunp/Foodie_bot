@@ -78,7 +78,7 @@ templates:
   utter_emailed_you:
     - "This information has been emailed to you."
   utter_invalid_emailid:
-    - "Please share a valid email"
+    - "Email id given is not valid. Please enter a valid email"
 
 actions:
 - utter_greet

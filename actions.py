@@ -7,6 +7,7 @@ from rasa_core.events import SlotSet
 import zomatopy
 import json
 import sys
+import re
 
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -125,9 +126,19 @@ class ActionSendEmail(Action):
 		return 'action_email'
 
 	def run(self, dispatcher, tracker, domain):
-		dispatcher.utter_message("Sending email ... ")
 		mailid = tracker.get_slot('emailid')
 		# dispatcher.utter_message("email id parsed = "+mailid)
+		if(mailid == None):
+			while (True):
+				dispatcher.utter_template("utter_invalid_emailid", tracker)
+				mailid = input()
+				# dispatcher.utter_message("inside while loop mailid entered :"+mailid)
+				if(bool(re.search(r"^[\w\.\+\-]+\@[\w]+\.[a-z]{2,3}$", mailid))):
+					break
+		# dispatcher.utter_message("final emailid"+mailid)	
+		SlotSet('emailid',mailid)
+
+		dispatcher.utter_message("Sending email ... ")
 		smtpServer = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 		emailContent = MIMEMultipart('alternative')
 		messageBody = "<h3>restaurant search results from chatbot</h3>"
