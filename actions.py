@@ -126,18 +126,18 @@ class ActionSendEmail(Action):
 
 	def run(self, dispatcher, tracker, domain):
 		dispatcher.utter_message("Inside email action")
-		# mailid = tracker.get_slot('emailid')
+		mailid = tracker.get_slot('emailid')
 		# dispatcher.utter_message("email id parsed = "+mailid)
 		smtpServer = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 		emailContent = MIMEMultipart('alternative')
 		messageBody = "<h3>restaurant search results from chatbot</h3>"
 		emailContent['Subject'] = 'Zomato search results'
 		emailContent['From'] = 'chatbotemailer123@gmail.com'
-		emailContent['To'] = 'yugadeepa.c@gmail.com'
+		emailContent['To'] = mailid
 		emailContent.attach(MIMEText(messageBody,'html'))
 		smtpServer.ehlo()
 		smtpServer.login('chatbotemailer123@gmail.com','learn.123')
 		smtpServer.send_message(emailContent)
 		smtpServer.quit()
 		dispatcher.utter_message("Sent email successfully to "+mailid)
-		return [SlotSet('emailid',mail)]
+		return [SlotSet('emailid',mailid)]
