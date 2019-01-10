@@ -29,10 +29,9 @@ class ActionValidateLocation(Action):
                'nagpur', 'nanded','nashik', 'nellore', 'noida','palakkad', 'patna', 'pondicherry', 'prayagraj', 'raipur', 'rajkot',
                'rajahmundry', 'ranchi', 'rourkela', 'salem', 'sangli','siliguri', 'solapur', 'srinagar', 'sultanpur', 'surat',
                'thiruvananthapuram','thrissur', 'tiruchirappalli', 'tirunelveli','tiruppur', 'ujjain', 'bijapur', 'vadodara', 'varanasi',
-               'vasai-virar city','vijayawada', 'visakhapatnam', 'warangal','bombay','madras','calcutta','gautam budh nagar',
-               'new delhi','hydrabad','bengaluru','bengalore','ahemdabad']
+               'vasai-virar city','vijayawada', 'visakhapatnam', 'warangal']
 
-		if location not in tier1:
+		if location is None or str(location).lower() not in tier1:
 			dispatcher.utter_template("utter_wrong_city",tracker)
 			location=None
 
@@ -45,13 +44,31 @@ class ActionValidateCuisine(Action):
 	def run(self, dispatcher, tracker, domain):
 		cuisine=tracker.get_slot('cuisine')
 		cuisine_list = ['american','italian','chinese','mexican','north indian','south indian']
-		while cuisine not in cuisine_list:
-			dispatcher.utter_template("utter_wrong_cuisine",tracker)
-			SlotSet('cuisine',None)
-			cuisine = input("Select from the available options:  ")
-			break
-			SlotSet('cuisine',cuisine)
+		if cuisine is None or str(cuisine).lower() not in cuisine_list:
+			dispatcher.utter_button_template("utter_wrong_cuisine",tracker)
+			cuisine=None
 		return [SlotSet('cuisine',cuisine)]
+
+class ActionValidateBudget(Action):
+	def name(self):
+		return 'action_validate_budget'
+
+	def run(self, dispatcher, tracker, domain):
+		minbudget = tracker.get_slot('minbudget')
+		maxbudget = tracker.get_slot('maxbudget')
+
+		if minbudget is not None and maxbudget is not None and str(minbudget).isdigit() and str(maxbudget).isdigit():
+			pass
+		elif minbudget is None and maxbudget is not None and str(maxbudget).isdigit():
+			pass
+		elif minbudget is not None and maxbudget is None and str(minbudget).isdigit():
+			pass
+		else:
+			dispatcher.utter_template("utter_wrong_budget",tracker)
+			minbudget = None
+			maxbudget = None
+
+		return [SlotSet('minbudget',minbudget),SlotSet('maxbudget',maxbudget)]
 
 class ActionSearchRestaurants(Action):
 	response = ""
@@ -76,7 +93,7 @@ class ActionSearchRestaurants(Action):
 		start=0
 		response=""
 		while search:
-			results=zomato.restaurant_search_paginated("", lat, lon, str(cuisines_dict.get(cuisine.lower())), start, 20)
+			results=zomato.restaurant_search_paginated("", lat, lon, str(cuisines_dict.get(cuisine)), start, 20)
 			d = json.loads(results)
 			if d['results_found'] == 0:
 				#response= "no results"
@@ -85,7 +102,7 @@ class ActionSearchRestaurants(Action):
 				for restaurant in d['restaurants']:
 					try:
 						price = restaurant['restaurant']['average_cost_for_two']
-						rating = restaurant['restaurant']['user_rating']['aggregate_rating']
+						# rating = restaurant['restaurant']['user_rating']['aggregate_rating']
 						if minbudget is not None and maxbudget is not None and price <= int(maxbudget) and price >= int(minbudget):
 							response=response+ "Found "+ restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address']+". And the average price for two people here is: Rs."+str(price)+"\n"
 							#dispatcher.utter_message("Found "+ restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address']+" with budget Rs."+str(price)+"\n")
@@ -125,19 +142,29 @@ class ActionSendEmail(Action):
 		return 'action_email'
 
 	def run(self, dispatcher, tracker, domain):
-		dispatcher.utter_message("Inside email action")
-		# mailid = tracker.get_slot('emailid')
+		mailid = tracker.get_slot('emailid')
 		# dispatcher.utter_message("email id parsed = "+mailid)
+		if(mailid == None):
+			while (True):
+				dispatcher.utter_template("utter_invalid_emailid", tracker)
+				mailid = input()
+				# dispatcher.utter_message("inside while loop mailid entered :"+mailid)
+				if(bool(re.search(r"^[\w\.\+\-]+\@[\w]+\.[a-z]{2,3}$", mailid))):
+					break
+		# dispatcher.utter_message("final emailid"+mailid)	
+		SlotSet('emailid',mailid)
+
+		dispatcher.utter_message("Sending email ... ")
 		smtpServer = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 		emailContent = MIMEMultipart('alternative')
 		messageBody = "<h3>restaurant search results from chatbot</h3>"
 		emailContent['Subject'] = 'Zomato search results'
 		emailContent['From'] = 'chatbotemailer123@gmail.com'
-		emailContent['To'] = 'yugadeepa.c@gmail.com'
+		emailContent['To'] = mailid
 		emailContent.attach(MIMEText(messageBody,'html'))
 		smtpServer.ehlo()
 		smtpServer.login('chatbotemailer123@gmail.com','learn.123')
 		smtpServer.send_message(emailContent)
 		smtpServer.quit()
-		dispatcher.utter_message("Sent email successfully to "+mailid)
-		return [SlotSet('emailid',mail)]
+		# dispatcher.utter_message("Sent email successfully to "+mailid)
+		return [SlotSet('emailid',mailid)]

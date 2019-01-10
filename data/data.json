@@ -41,7 +41,8 @@
       {
         "value": "ahmedabad",
         "synonyms": [
-          "ahemdabad"
+          "ahemdabad",
+          "karnavati"
         ]
       },
       {
@@ -60,7 +61,8 @@
       {
         "value": "hyderabad",
         "synonyms": [
-          "hydrabad"
+          "hydrabad",
+          "bhagyanagar"
         ]
       },
       {
@@ -82,15 +84,228 @@
         ]
       },
       {
+        "value": "pune",
+        "synonyms": [
+          "poona"
+        ]
+      },
+      {
+        "value": "aurangabad",
+        "synonyms": [
+          "sambhajinagar"
+        ]
+      },
+      {
+        "value": "belgaum",
+        "synonyms": [
+          "belagavi"
+        ]
+      },
+      {
+        "value": "bhopal",
+        "synonyms": [
+          "bhojpal"
+        ]
+      },
+      {
+        "value": "gulbarga",
+        "synonyms": [
+          "kalaburagi"
+        ]
+      },
+      {
+        "value": "gurgaon",
+        "synonyms": [
+          "gurugram"
+        ]
+      },
+      {
+        "value": "guwahati",
+        "synonyms": [
+          "gauhati"
+        ]
+      },
+      {
+        "value": "hubli-dharwad",
+        "synonyms": [
+          "hubballi"
+        ]
+      },
+      {
+        "value": "indore",
+        "synonyms": [
+          "indhur"
+        ]
+      },
+      {
+        "value": "jabalpur",
+        "synonyms": [
+          "jubbulpore"
+        ]
+      },
+      {
+        "value": "kannur",
+        "synonyms": [
+          "cannanore"
+        ]
+      },
+      {
+        "value": "kanpur",
+        "synonyms": [
+          "cawnpore"
+        ]
+      },
+      {
+        "value": "kochi",
+        "synonyms": [
+          "cochin"
+        ]
+      },
+      {
+        "value": "kollam",
+        "synonyms": [
+          "quilon"
+        ]
+      },
+      {
+        "value": "kozhikode",
+        "synonyms": [
+          "calicut"
+        ]
+      },
+      {
+        "value": "lucknow",
+        "synonyms": [
+          "lakshmanpur"
+        ]
+      },
+      {
+        "value": "mangalore",
+        "synonyms": [
+          "mangaluru"
+        ]
+      },
+      {
+        "value": "mysore",
+        "synonyms": [
+          "mysuru"
+        ]
+      },
+      {
+        "value": "nellore",
+        "synonyms": [
+          "simhapuri"
+        ]
+      },
+      {
+        "value": "palakkad",
+        "synonyms": [
+          "palghat"
+        ]
+      },
+      {
+        "value": "pondicherry",
+        "synonyms": [
+          "puducherry"
+        ]
+      },
+      {
+        "value": "prayagraj",
+        "synonyms": [
+          "allahabad"
+        ]
+      },
+      {
+        "value": "raipur",
+        "synonyms": [
+          "atal nagar",
+          "new raipur"
+        ]
+      },
+      {
+        "value": "rajahmundry",
+        "synonyms": [
+          "rajahmahendravaram"
+        ]
+      },
+      {
+        "value": "sultanpur",
+        "synonyms": [
+          "khus bhavanpur"
+        ]
+      },
+      {
+        "value": "thiruvananthapuram",
+        "synonyms": [
+          "trivandrum"
+        ]
+      },
+      {
+        "value": "thrissur",
+        "synonyms": [
+          "trichur"
+        ]
+      },
+      {
+        "value": "tirunelveli",
+        "synonyms": [
+          "tinnevelly"
+        ]
+      },
+      {
+        "value": "bijapur",
+        "synonyms": [
+          "vijapura"
+        ]
+      },
+      {
+        "value": "bijapur",
+        "synonyms": [
+          "vijapura"
+        ]
+      },
+      {
+        "value": "vadodara",
+        "synonyms": [
+          "baroda"
+        ]
+      },
+      {
+        "value": "varanasi",
+        "synonyms": [
+          "benares"
+        ]
+      },
+      {
+        "value": "vijayawada",
+        "synonyms": [
+          "bejawada"
+        ]
+      },
+      {
+        "value": "visakhapatnam",
+        "synonyms": [
+          "waltair",
+          "vizagapatnam",
+          "vizag"
+        ]
+      },
+      {
         "value": "delhi",
         "synonyms": [
-          "new delhi"
+          "new delhi",
+          "Indraprashtha"
         ]
       }
     ],
     "common_examples": [
       {
         "text": "hey",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "Hola",
         "intent": "greet",
         "entities": []
       },
@@ -642,7 +857,7 @@
             "start": 10,
             "end": 13,
             "value": "700",
-            "entity": "maxbudget"
+            "entity": "minbudget"
           }
         ]
       },
@@ -689,7 +904,6 @@
         ]
       },
       {
-
         "text": "No",
         "intent": "deny",
         "entities": []
@@ -725,13 +939,13 @@
         "entities": [
           {
             "start": 12,
-            "end": 25,
+            "end": 26,
             "value": "test@gmail.com",
             "entity": "emailid"
           }
         ]
-        },
-        {
+      },
+      {
         "text": "> 500 < 1200",
         "intent": "restaurant_search",
         "entities": [
@@ -792,17 +1006,16 @@
         ]
       },
       {
-
         "text": "test1@gmail.com",
         "intent": "send_email",
         "entities": [
           {
             "start": 0,
             "end": 15,
-            "value": "test5@gmail.com",
+            "value": "test1@gmail.com",
             "entity": "emailid"
           }
-         ]
+        ]
       },
       {
         "text": "at hyderabad",
@@ -821,14 +1034,14 @@
         "intent": "send_email",
         "entities": [
           {
-            "start": 12,
+            "start": 11,
             "end": 26,
-            "value": "test5@gmail.com",
+            "value": "test1@gmail.com",
             "entity": "emailid"
           }
-         ]
+        ]
       },
-    {
+      {
         "text": "somewhere near mysore",
         "intent": "restaurant_search",
         "entities": [
@@ -836,6 +1049,93 @@
             "start": 15,
             "end": 21,
             "value": "mysore",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "greetings",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "hallo",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "heeey",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "yo",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "hey bot!",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "ayyyy whaddup",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "whats up",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "jojojo",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "hi there it's me",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "show me a mexican place in the centre ",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 31,
+            "end": 37,
+            "value": "centre",
+            "entity": "location"
+          },
+          {
+            "start": 10,
+            "end": 17,
+            "value": "mexican",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "show me restauants in madras",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 22,
+            "end": 28,
+            "value": "chennai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "find me food at poona",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 16,
+            "end": 21,
+            "value": "pune",
             "entity": "location"
           }
         ]

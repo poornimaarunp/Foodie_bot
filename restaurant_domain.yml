@@ -66,6 +66,10 @@ templates:
         payload: ">700"
   utter_wrong_city:
     - "We don't operate in that area yet. Can you please specify some other location"
+    - "Sorry, we don’t operate in this city. Can you please specify some other location"
+    - "Please try some other nearby cities"
+    - "Oops! we currently don't service here. Try another city"
+    - "Sorry, didn’t find any such location. Can you please tell again?"
   utter_wrong_cuisine:
     - "We don't offer the requested cuisine. Please select from the available options"
   utter_ask_email_preference:
@@ -79,6 +83,9 @@ templates:
     - "This information has been emailed to you."
   utter_invalid_emailid:
     - "Please share a valid email"
+  utter_wrong_budget:
+    - "We need valid budget details for better results. Can you please specify the budget"
+    - "We are not able to understand the budget. Can you please choose from available options or valid budget"
 
 actions:
 - utter_greet
@@ -95,3 +102,5 @@ actions:
 - utter_ask_emailid
 - actions.ActionSendEmail
 - utter_emailed_you
+- utter_wrong_budget
+- actions.ActionValidateBudget
