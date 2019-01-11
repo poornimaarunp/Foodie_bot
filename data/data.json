@@ -443,18 +443,6 @@
         "entities": []
       },
       {
-        "text": "i'm looking for a place in the north of town",
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 31,
-            "end": 36,
-            "value": "north",
-            "entity": "location"
-          }
-        ]
-      },
-      {
         "text": "show me chinese restaurants",
         "intent": "restaurant_search",
         "entities": [
@@ -467,7 +455,7 @@
         ]
       },
       {
-        "text": "show me chines restaurants in the north",
+        "text": "show me chines restaurants",
         "intent": "restaurant_search",
         "entities": [
           {
@@ -475,12 +463,6 @@
             "end": 14,
             "value": "chinese",
             "entity": "cuisine"
-          },
-          {
-            "start": 34,
-            "end": 39,
-            "value": "north",
-            "entity": "location"
           }
         ]
       },
@@ -576,6 +558,30 @@
             "end": 9,
             "value": "London",
             "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "show me a South Indian restaurant",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 10,
+            "end": 22,
+            "value": "South Indian",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "show me a North Indian restaurant",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 10,
+            "end": 22,
+            "value": "North Indian",
+            "entity": "cuisine"
           }
         ]
       },
@@ -1060,7 +1066,7 @@
             "value": "jddk@kdl.co.in",
             "entity": "emailid"
           }
-         ]
+        ]
       },
       {
         "text": "jddk2sdfad@kdl.co.in",
@@ -1072,10 +1078,9 @@
             "value": "jddk2sdfad@kdl.co.in",
             "entity": "emailid"
           }
-         ]
+        ]
       },
       {
-
         "text": "test1@sdfsdf.sdfsd",
         "intent": "send_email",
         "entities": [
@@ -1085,10 +1090,9 @@
             "value": "test1@sdfsdf.sdfsd",
             "entity": "emailid"
           }
-         ]
+        ]
       },
       {
-
         "text": "adf23431adfa@htyhty.sfdfg",
         "intent": "send_email",
         "entities": [
@@ -1098,10 +1102,9 @@
             "value": "adf23431adfa@htyhty.sfdfg",
             "entity": "emailid"
           }
-         ]
+        ]
       },
       {
-
         "text": "adsfqewqewfdqwe@3r2rdw.fwew3e",
         "intent": "send_email",
         "entities": [
@@ -1111,7 +1114,7 @@
             "value": "adsfqewqewfdqwe@3r2rdw.fwew3e",
             "entity": "emailid"
           }
-         ]
+        ]
       },
       {
         "text": "yes. Please send it to ahbcdj@dkj.com",
@@ -1123,7 +1126,7 @@
             "value": "ahbcdj@dkj.com",
             "entity": "emailid"
           }
-         ]
+        ]
       },
       {
         "text": "yes. Please send it to jddk@kdl.co.in",
@@ -1135,7 +1138,7 @@
             "value": "jddk@kdl.co.in",
             "entity": "emailid"
           }
-         ]
+        ]
       },
       {
         "text": "at hyderabad",
@@ -1286,13 +1289,73 @@
       },
       {
         "text": "go for 4",
-        "intent": "",
+        "intent": "restaurant_search",
         "entities": [
           {
             "start": 7,
             "end": 8,
             "value": "4",
             "entity": "freetext"
+          }
+        ]
+      },
+      {
+        "text": "show me South Indian restaurants in Madras",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 8,
+            "end": 20,
+            "value": "South Indian",
+            "entity": "cuisine"
+          },
+          {
+            "start": 36,
+            "end": 42,
+            "value": "Chennai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "show me south indian restaurants in delhi",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 8,
+            "end": 20,
+            "value": "south indian",
+            "entity": "cuisine"
+          },
+          {
+            "start": 36,
+            "end": 41,
+            "value": "delhi",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "i'll prefer american",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 12,
+            "end": 20,
+            "value": "american",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "I'll prefer north indian",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 12,
+            "end": 24,
+            "value": "north indian",
+            "entity": "cuisine"
           }
         ]
       }

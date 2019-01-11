@@ -37,13 +37,15 @@ templates:
   utter_goodbye:
     - "goodbye :("
     - "Bye-bye"
-    - "bye was nice talking to you"
+    - "bye! it was nice talking to you"
     - "bye for now"
     - "catch you later"
     - "see ya"
     - "talk to you later"
+    - "nice talking to you"
   utter_default:
-    - "default message"
+    - "Hi there!! Welcome. I am the Foodie bot. You can talk to me to search for restaurants in India."
+    - "Hi!! Welcome. I am the Foodie bot. I can help you find good places to eat in all major cities in India. Tell me your interests."
   utter_ask_cuisine:
     - text: "what kind of cuisine would you like?"
       buttons:
@@ -63,6 +65,9 @@ templates:
     - "how can I help you?"
   utter_ask_location:
     - "In what location?"
+    - "what location you are looking for?"
+    - "Sure! tell me the location"
+    - "My pleasure!! where do you want to dine today?"
   utter_ask_budget:
     - text: "What's the average budget for two people?"
       buttons:
@@ -114,3 +119,4 @@ actions:
 - utter_emailed_you
 - utter_wrong_budget
 - actions.ActionValidateBudget
+- actions.ActionClearSlots

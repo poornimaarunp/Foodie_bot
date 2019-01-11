@@ -22,6 +22,12 @@ class ActionValidateLocation(Action):
 
 	def run(self, dispatcher, tracker, domain):
 		location = tracker.get_slot('location')
+
+		print("in validateloc - Location:"+str(tracker.get_slot('location')))
+		print("cuisine:"+str(tracker.get_slot('cuisine')))
+		print("minbudget:"+str(tracker.get_slot('minbudget')))
+		print("maxbudget:"+str(tracker.get_slot('maxbudget')))
+
 		tier1=['ahmedabad','bangalore','chennai','delhi','hyderabad','kolkata','mumbai','pune','agra','ajmer'
                ,'aligarh','amravati','amritsar','asansol','aurangabad','bareilly', 'belgaum', 'bhavnagar', 'bhiwandi','bhopal',
                'bhubaneswar', 'bikaner','bokaro steel city', 'chandigarh', 'coimbatore', 'cuttack', 'dehradun', 'dhanbad',
@@ -49,6 +55,12 @@ class ActionValidateCuisine(Action):
 	def run(self, dispatcher, tracker, domain):
 		cuisine=tracker.get_slot('cuisine')
 		freetext = tracker.get_slot('freetext')
+
+		print("in validate cuisine - Location:"+str(tracker.get_slot('location')))
+		print("cuisine:"+str(tracker.get_slot('cuisine')))
+		print("minbudget:"+str(tracker.get_slot('minbudget')))
+		print("maxbudget:"+str(tracker.get_slot('maxbudget')))
+		print("freetext:"+str(tracker.get_slot('freetext')))
 		cuisine_list = ['american','italian','chinese','mexican','north indian','south indian']
 		cuisine_buttons = {1:"chinese", 2:"mexican", 3:"italian", 4:"american", 5:"south indian", 6:"north indian"}
 
@@ -71,7 +83,11 @@ class ActionValidateBudget(Action):
 		minbudget = tracker.get_slot('minbudget')
 		maxbudget = tracker.get_slot('maxbudget')
 		freetext = tracker.get_slot('freetext')
-
+		print("in validate budget - Location:"+str(tracker.get_slot('location')))
+		print("cuisine:"+str(tracker.get_slot('cuisine')))
+		print("minbudget:"+str(tracker.get_slot('minbudget')))
+		print("maxbudget:"+str(tracker.get_slot('maxbudget')))
+		print("freetext:"+str(tracker.get_slot('freetext')))
 		try:
 			if minbudget is not None and maxbudget is not None and str(minbudget).isdigit() and str(maxbudget).isdigit():
 				pass
@@ -119,6 +135,10 @@ class ActionSearchRestaurants(Action):
 		cuisine = tracker.get_slot('cuisine')
 		minbudget = tracker.get_slot('minbudget')
 		maxbudget = tracker.get_slot('maxbudget')
+		print("in search - Location:"+str(tracker.get_slot('location')))
+		print("cuisine:"+str(tracker.get_slot('cuisine')))
+		print("minbudget:"+str(tracker.get_slot('minbudget')))
+		print("maxbudget:"+str(tracker.get_slot('maxbudget')))
 		location_detail=zomato.get_location(loc, 1)
 		d1 = json.loads(location_detail)
 		lat=d1["location_suggestions"][0]["latitude"]
@@ -128,6 +148,7 @@ class ActionSearchRestaurants(Action):
 		count=0
 		start=0
 		response=""
+		dispatcher.utter_message("Looking for restaurants based on your preference ... ")
 		while search:
 			results=zomato.restaurant_search_paginated("", lat, lon, str(cuisines_dict.get(cuisine)), start, 20)
 			d = json.loads(results)
@@ -217,50 +238,66 @@ class ZomatoClient:
 		cuisine = tracker.get_slot('cuisine')
 		minbudget = tracker.get_slot('minbudget')
 		maxbudget = tracker.get_slot('maxbudget')
-		location_detail=zomato.get_location(loc, 1)
-		d1 = json.loads(location_detail)
-		lat=d1["location_suggestions"][0]["latitude"]
-		lon=d1["location_suggestions"][0]["longitude"]
-		cuisines_dict={'american':1,'chinese':25,'mexican':73,'italian':55,'north_indian':50,'south_indian':85}
-		search = True
-		count=0
-		start=0
-		messageBody = "<h3>restaurant search results </h3>"
-		messageBody = messageBody + "You recently searched for restaurants in "+loc+" serving "+cuisine+" cuisine. Please refer to the details below.<br/>"
-		messageBody = messageBody + "<table  border=\" 5px solid black\" >"
-		messageBody = messageBody + "<tr> <th>Restaurant</th> <th>Address</th>  <th>Average price for two</th> </tr>"
-		messageBody = messageBody + ""
-		while search:
-			results=zomato.restaurant_search_paginated("", lat, lon, str(cuisines_dict.get(cuisine.lower())), start, 20)
-			d = json.loads(results)
-			if d['results_found'] == 0:
-				pass
-			else:
-				for restaurant in d['restaurants']:
-					try:
-						price = restaurant['restaurant']['average_cost_for_two']
-						if minbudget is not None and maxbudget is not None and price <= int(maxbudget) and price >= int(minbudget):
-							messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>"
-							count = count + 1
-						elif minbudget is None and maxbudget is not None and price <= int(maxbudget):
-							messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>"
-							count = count + 1
-						elif minbudget is not None and maxbudget is None and price >= int(minbudget):
-							messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>"
-							count = count + 1
-						else:
+		messageBody = ""
+		try:
+			location_detail=zomato.get_location(loc, 1)
+			d1 = json.loads(location_detail)
+			lat=d1["location_suggestions"][0]["latitude"]
+			lon=d1["location_suggestions"][0]["longitude"]
+			cuisines_dict={'american':1,'chinese':25,'mexican':73,'italian':55,'north indian':50,'south indian':85}
+			search = True
+			count=0
+			start=0
+			messageBody = "<h3>restaurant search results </h3>"
+			messageBody = messageBody + "You recently searched for restaurants in "+loc+" serving "+cuisine+" cuisine. Please refer to the details below.<br/>"
+			messageBody = messageBody + "<table  border=\" 5px solid black\" >"
+			messageBody = messageBody + "<tr> <th>Restaurant</th> <th>Address</th>  <th>Average price for two</th> </tr>"
+			messageBody = messageBody + ""
+			while search:
+				results=zomato.restaurant_search_paginated("", lat, lon, str(cuisines_dict.get(cuisine)), start, 20)
+				d = json.loads(results)
+				if d['results_found'] == 0:
+					pass
+				else:
+					for restaurant in d['restaurants']:
+						try:
+							price = restaurant['restaurant']['average_cost_for_two']
+							if minbudget is not None and maxbudget is not None and price <= int(maxbudget) and price >= int(minbudget):
+								messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>"
+								count = count + 1
+							elif minbudget is None and maxbudget is not None and price <= int(maxbudget):
+								messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>"
+								count = count + 1
+							elif minbudget is not None and maxbudget is None and price >= int(minbudget):
+								messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>"
+								count = count + 1
+							else:
+								pass
+
+							if count >= maxcount:
+								search=False
+								break
+						except:
 							pass
 
-						if count >= maxcount:
-							search=False
-							break
-					except:
-						pass
-
-			if start<500:
-				start=start + 20
-			else:
-				search=False
-		messageBody = messageBody + "</table>"
-		messageBody = messageBody + "<h4> Bon Appetit! </h4>"
+				if start<500:
+					start=start + 20
+				else:
+					search=False
+			messageBody = messageBody + "</table>"
+			messageBody = messageBody + "<h4> Bon Appetit! </h4>"
+		except:
+			messageBody = messageBody + "<p>Error while trying to populate results for email. </p>"
 		return messageBody
+
+class ActionClearSlots(Action):
+	def name(self):
+		return 'action_clear_slots'
+
+	def run(self, dispatcher, tracker, domain):
+		return [SlotSet('location',None),
+				SlotSet('cuisine',None),
+				SlotSet('minbudget',None),
+				SlotSet('maxbudget',None),
+				SlotSet('emailid',None),
+				SlotSet('freetext',None)]
