@@ -9,6 +9,8 @@ slots:
     type: text
   emailid:
     type: text
+  freetext:
+    type: text
 
 entities:
 - location
@@ -16,6 +18,7 @@ entities:
 - minbudget
 - maxbudget
 - emailid
+- freetext
 
 intents:
  - greet
@@ -34,6 +37,11 @@ templates:
   utter_goodbye:
     - "goodbye :("
     - "Bye-bye"
+    - "bye was nice talking to you"
+    - "bye for now"
+    - "catch you later"
+    - "see ya"
+    - "talk to you later"
   utter_default:
     - "default message"
   utter_ask_cuisine:

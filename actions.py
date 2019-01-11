@@ -14,6 +14,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.message import EmailMessage
 
+import traceback as tb
+
 class ActionValidateLocation(Action):
 	def name(self):
 		return 'action_validate_location'
@@ -31,10 +33,12 @@ class ActionValidateLocation(Action):
                'rajahmundry', 'ranchi', 'rourkela', 'salem', 'sangli','siliguri', 'solapur', 'srinagar', 'sultanpur', 'surat',
                'thiruvananthapuram','thrissur', 'tiruchirappalli', 'tirunelveli','tiruppur', 'ujjain', 'bijapur', 'vadodara', 'varanasi',
                'vasai-virar city','vijayawada', 'visakhapatnam', 'warangal']
-
-		if location is None or str(location).lower() not in tier1:
-			dispatcher.utter_template("utter_wrong_city",tracker)
-			location=None
+		try:
+			if location is None or str(location).lower() not in tier1:
+				dispatcher.utter_template("utter_wrong_city",tracker)
+				location = None
+		except:
+			location = None
 
 		return [SlotSet('location',location)]
 
@@ -44,11 +48,20 @@ class ActionValidateCuisine(Action):
 
 	def run(self, dispatcher, tracker, domain):
 		cuisine=tracker.get_slot('cuisine')
+		freetext = tracker.get_slot('freetext')
 		cuisine_list = ['american','italian','chinese','mexican','north indian','south indian']
-		if cuisine is None or str(cuisine).lower() not in cuisine_list:
-			dispatcher.utter_button_template("utter_wrong_cuisine",tracker)
-			cuisine=None
-		return [SlotSet('cuisine',cuisine)]
+		cuisine_buttons = {1:"chinese", 2:"mexican", 3:"italian", 4:"american", 5:"south indian", 6:"north indian"}
+
+		try:
+			if  cuisine is None and freetext is not None:
+				cuisine = cuisine_buttons.get(int(freetext))
+			elif cuisine is None or str(cuisine).lower() not in cuisine_list:
+				dispatcher.utter_template("utter_wrong_cuisine",tracker)
+				cuisine = None
+		except:
+			cuisine = None
+
+		return [SlotSet('cuisine',cuisine),SlotSet('freetext',None)]
 
 class ActionValidateBudget(Action):
 	def name(self):
@@ -57,19 +70,41 @@ class ActionValidateBudget(Action):
 	def run(self, dispatcher, tracker, domain):
 		minbudget = tracker.get_slot('minbudget')
 		maxbudget = tracker.get_slot('maxbudget')
+		freetext = tracker.get_slot('freetext')
 
-		if minbudget is not None and maxbudget is not None and str(minbudget).isdigit() and str(maxbudget).isdigit():
-			pass
-		elif minbudget is None and maxbudget is not None and str(maxbudget).isdigit():
-			pass
-		elif minbudget is not None and maxbudget is None and str(minbudget).isdigit():
-			pass
-		else:
-			dispatcher.utter_template("utter_wrong_budget",tracker)
+		try:
+			if minbudget is not None and maxbudget is not None and str(minbudget).isdigit() and str(maxbudget).isdigit():
+				pass
+			elif minbudget is None and maxbudget is not None and str(maxbudget).isdigit():
+				pass
+			elif minbudget is not None and maxbudget is None and str(minbudget).isdigit():
+				pass
+			elif minbudget is None and maxbudget is None and str(freetext).isdigit() and len(freetext)<3:
+				if str(freetext) is "1":
+					maxbudget = "300"
+					minbudget = None
+				elif str(freetext) is "2":
+					maxbudget = "700"
+					minbudget = "300"
+				elif str(freetext) is "3":
+					maxbudget = None
+					minbudget = "700"
+				else:
+					dispatcher.utter_template("utter_wrong_budget",tracker)
+					minbudget = None
+					maxbudget = None
+					freetext = None
+			else:
+				dispatcher.utter_template("utter_wrong_budget",tracker)
+				minbudget = None
+				maxbudget = None
+				freetext = None
+		except:
 			minbudget = None
 			maxbudget = None
+			freetext = None
 
-		return [SlotSet('minbudget',minbudget),SlotSet('maxbudget',maxbudget)]
+		return [SlotSet('minbudget',minbudget),SlotSet('maxbudget',maxbudget),SlotSet('freetext',freetext)]
 
 class ActionSearchRestaurants(Action):
 	response = ""
@@ -88,7 +123,7 @@ class ActionSearchRestaurants(Action):
 		d1 = json.loads(location_detail)
 		lat=d1["location_suggestions"][0]["latitude"]
 		lon=d1["location_suggestions"][0]["longitude"]
-		cuisines_dict={'american':1,'chinese':25,'mexican':73,'italian':55,'north_indian':50,'south_indian':85}
+		cuisines_dict={'american':1,'chinese':25,'mexican':73,'italian':55,'north indian':50,'south indian':85}
 		search = True
 		count=0
 		start=0
@@ -190,10 +225,10 @@ class ZomatoClient:
 		count=0
 		start=0
 		messageBody = "<h3>restaurant search results </h3>"
-		messageBody = messageBody + "You recently searched for restaurants in "+loc+" serving "+cuisine+" cuisine. Please refer to the details below.<br/>";
-		messageBody = messageBody + "<table  border=\" 5px solid black\" >";
-		messageBody = messageBody + "<tr> <th>Restaurant</th> <th>Address</th>  <th>Average price for two</th> </tr>";
-		messageBody = messageBody + "";
+		messageBody = messageBody + "You recently searched for restaurants in "+loc+" serving "+cuisine+" cuisine. Please refer to the details below.<br/>"
+		messageBody = messageBody + "<table  border=\" 5px solid black\" >"
+		messageBody = messageBody + "<tr> <th>Restaurant</th> <th>Address</th>  <th>Average price for two</th> </tr>"
+		messageBody = messageBody + ""
 		while search:
 			results=zomato.restaurant_search_paginated("", lat, lon, str(cuisines_dict.get(cuisine.lower())), start, 20)
 			d = json.loads(results)
@@ -203,15 +238,14 @@ class ZomatoClient:
 				for restaurant in d['restaurants']:
 					try:
 						price = restaurant['restaurant']['average_cost_for_two']
-						rating = restaurant['restaurant']['user_rating']['aggregate_rating']
 						if minbudget is not None and maxbudget is not None and price <= int(maxbudget) and price >= int(minbudget):
-							messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>";
+							messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>"
 							count = count + 1
 						elif minbudget is None and maxbudget is not None and price <= int(maxbudget):
-							messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>";
+							messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>"
 							count = count + 1
 						elif minbudget is not None and maxbudget is None and price >= int(minbudget):
-							messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>";
+							messageBody = messageBody + " <tr> <td>"+ restaurant['restaurant']['name']+ "</td> <td>"+ restaurant['restaurant']['location']['address']+"</td> <td>"+str(price)+"</td> </tr>"
 							count = count + 1
 						else:
 							pass
@@ -226,6 +260,6 @@ class ZomatoClient:
 				start=start + 20
 			else:
 				search=False
-		messageBody = messageBody + "</table>";
-		messageBody = messageBody + "<h4> Bon Appetit! </h4>";
+		messageBody = messageBody + "</table>"
+		messageBody = messageBody + "<h4> Bon Appetit! </h4>"
 		return messageBody
