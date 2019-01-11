@@ -183,11 +183,12 @@ class ActionSendEmail(Action):
 		if(mailid == None):
 			while (True):
 				dispatcher.utter_template("utter_invalid_emailid", tracker)
-				mailid = input()
 				# dispatcher.utter_message("inside while loop mailid entered :"+mailid)
-				if(bool(re.search(r"^[\w\.\+\-]+\@[\w]+\.[a-z]{2,3}$", mailid))):
+				# r"^[\w\.\+\-]+\@[\w]+[\.[a-z]]{2,5}$"
+				# r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+				if(bool(re.search(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", mailid))):
 					break
-		# dispatcher.utter_message("final emailid"+mailid)	
+		# dispatcher.utter_message("final emailid"+mailid)
 		SlotSet('emailid',mailid)
 
 		dispatcher.utter_message("Sending email ... ")

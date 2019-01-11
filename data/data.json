@@ -7,7 +7,7 @@
       },
       {
         "name": "emailid",
-        "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$"
+        "pattern": "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)"
       },
       {
         "name": "greet",
@@ -343,6 +343,11 @@
         "entities": []
       },
       {
+        "text": "Hello!",
+        "intent": "greet",
+        "entities": []
+      },
+      {
         "text": "hi",
         "intent": "greet",
         "entities": []
@@ -364,6 +369,11 @@
       },
       {
         "text": "yes",
+        "intent": "affirm",
+        "entities": []
+      },
+      {
+        "text": "yes. Please",
         "intent": "affirm",
         "entities": []
       },
@@ -932,6 +942,11 @@
         "entities": []
       },
       {
+        "text": "no. thanks",
+        "intent": "deny",
+        "entities": []
+      },
+      {
         "text": "Dont send",
         "intent": "deny",
         "entities": []
@@ -1034,6 +1049,93 @@
             "entity": "emailid"
           }
         ]
+      },
+      {
+        "text": "jddk@kdl.co.in",
+        "intent": "send_email",
+        "entities": [
+          {
+            "start": 0,
+            "end": 14,
+            "value": "jddk@kdl.co.in",
+            "entity": "emailid"
+          }
+         ]
+      },
+      {
+        "text": "jddk2sdfad@kdl.co.in",
+        "intent": "send_email",
+        "entities": [
+          {
+            "start": 0,
+            "end": 20,
+            "value": "jddk2sdfad@kdl.co.in",
+            "entity": "emailid"
+          }
+         ]
+      },
+      {
+
+        "text": "test1@sdfsdf.sdfsd",
+        "intent": "send_email",
+        "entities": [
+          {
+            "start": 0,
+            "end": 18,
+            "value": "test1@sdfsdf.sdfsd",
+            "entity": "emailid"
+          }
+         ]
+      },
+      {
+
+        "text": "adf23431adfa@htyhty.sfdfg",
+        "intent": "send_email",
+        "entities": [
+          {
+            "start": 0,
+            "end": 25,
+            "value": "adf23431adfa@htyhty.sfdfg",
+            "entity": "emailid"
+          }
+         ]
+      },
+      {
+
+        "text": "adsfqewqewfdqwe@3r2rdw.fwew3e",
+        "intent": "send_email",
+        "entities": [
+          {
+            "start": 0,
+            "end": 29,
+            "value": "adsfqewqewfdqwe@3r2rdw.fwew3e",
+            "entity": "emailid"
+          }
+         ]
+      },
+      {
+        "text": "yes. Please send it to ahbcdj@dkj.com",
+        "intent": "send_email",
+        "entities": [
+          {
+            "start": 23,
+            "end": 37,
+            "value": "ahbcdj@dkj.com",
+            "entity": "emailid"
+          }
+         ]
+      },
+      {
+        "text": "yes. Please send it to jddk@kdl.co.in",
+        "intent": "send_email",
+        "entities": [
+          {
+            "start": 23,
+            "end": 37,
+            "value": "jddk@kdl.co.in",
+            "entity": "emailid"
+          }
+         ]
       },
       {
         "text": "at hyderabad",
