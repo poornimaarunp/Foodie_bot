@@ -6,12 +6,15 @@ An Indian startup named 'Foodie' wants to build a conversational bot (chatbot) w
 The main purpose of the bot is to help users discover restaurants quickly and efficiently and to provide a good restaurant discovery experience. 
 
 ## Training the model
-Run the command `python ./nlu_model.py`
+Run the command 
+`python ./nlu_model.py`
 
-The trained model gets stored under the folder `/models/nlu/`
+The trained model gets stored under the folder 
+`/models/nlu/`
 
 ## Test the trained model
-Run the command to expose the model through an API `python ./App_nlu.py`
+Run the command to expose the model through an API 
+`python ./App_nlu.py`
 
 Use the below curl command to pass the query and hit the API
 `curl -X POST \
@@ -62,9 +65,11 @@ The response from the api would be as below
 }`
 
 ## Training Dialogue management model
-To train the dialogue management model, Run the command `python ./train_init.py`
+To train the dialogue management model, Run the command 
+`python ./train_init.py`
 
 ## Run the bot
-To run the bot from command line, Run the command `python ./dialogue_management_model.py`
+To run the bot from command line, Run the command 
+`python ./dialogue_management_model.py`
 
 
