@@ -455,12 +455,12 @@
         ]
       },
       {
-        "text": "show me chines restaurants",
+        "text": "find some chinese restaurants",
         "intent": "restaurant_search",
         "entities": [
           {
-            "start": 8,
-            "end": 14,
+            "start": 10,
+            "end": 17,
             "value": "chinese",
             "entity": "cuisine"
           }
@@ -586,78 +586,6 @@
         ]
       },
       {
-        "text": "South Indian",
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 0,
-            "end": 12,
-            "value": "South Indian",
-            "entity": "cuisine"
-          }
-        ]
-      },
-      {
-        "text": "North Indian",
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 0,
-            "end": 12,
-            "value": "North Indian",
-            "entity": "cuisine"
-          }
-        ]
-      },
-      {
-        "text": "Italian",
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 0,
-            "end": 7,
-            "value": "Italian",
-            "entity": "cuisine"
-          }
-        ]
-      },
-      {
-        "text": "Chinese",
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 0,
-            "end": 7,
-            "value": "chinese",
-            "entity": "cuisine"
-          }
-        ]
-      },
-      {
-        "text": "chinese",
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 0,
-            "end": 7,
-            "value": "chinese",
-            "entity": "cuisine"
-          }
-        ]
-      },
-      {
-        "text": "Lithuania",
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 0,
-            "end": 9,
-            "value": "Lithuania",
-            "entity": "location"
-          }
-        ]
-      },
-      {
         "text": "Oh, sorry, in Italy",
         "intent": "restaurant_search",
         "entities": [
@@ -764,22 +692,10 @@
             "entity": "location"
           },
           {
-            "start": 34,
-            "end": 42,
-            "value": "mid",
-            "entity": "price"
-          },
-          {
             "start": 60,
             "end": 67,
             "value": "british",
             "entity": "cuisine"
-          },
-          {
-            "start": 77,
-            "end": 81,
-            "value": "4",
-            "entity": "people"
           }
         ]
       },
@@ -1318,6 +1234,24 @@
         ]
       },
       {
+        "text": "find some South Indian restaurants in Madras",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 8,
+            "end": 20,
+            "value": "South Indian",
+            "entity": "cuisine"
+          },
+          {
+            "start": 36,
+            "end": 42,
+            "value": "Chennai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
         "text": "show me south indian restaurants in delhi",
         "intent": "restaurant_search",
         "entities": [
@@ -1356,6 +1290,18 @@
             "end": 24,
             "value": "north indian",
             "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "at pune",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 3,
+            "end": 7,
+            "value": "pune",
+            "entity": "location"
           }
         ]
       }

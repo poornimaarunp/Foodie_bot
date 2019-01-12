@@ -85,6 +85,7 @@ templates:
     - "Sorry, didn’t find any such location. Can you please tell again?"
   utter_wrong_cuisine:
     - "We don't offer the requested cuisine. Please select from the available options"
+    - "Ohho, we only have the following options - chinese, american, italian, american, south indian, north indian. Choose one"
   utter_ask_email_preference:
     - "Shall I forward you this information in an email?"
     - "Would you like to send this information in an email?"
@@ -120,3 +121,5 @@ actions:
 - utter_wrong_budget
 - actions.ActionValidateBudget
 - actions.ActionClearSlots
+- utter_wrong_cuisine
+- utter_wrong_city
