@@ -1,6 +1,13 @@
 ## Generated Story 255706069223404498
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search
     - utter_ask_location
 * restaurant_search{"location": "delhi"}
@@ -41,6 +48,13 @@
 ## Generated Story 1993277579540566202 
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search
     - utter_ask_location
 * restaurant_search{"location": "delhi"}
@@ -77,6 +91,13 @@
 ## Generated Story 1993277579540566202 
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search
     - utter_ask_location
 * restaurant_search{"location": "delhi"}
@@ -113,6 +134,13 @@
 ## Generated Story 3320800183399695936 
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search
     - utter_ask_location
 * restaurant_search{"location": "italy"}
@@ -150,6 +178,13 @@
 ## Generated Story 4963448062290237512 
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search{"location": "delhi"}
     - slot{"location": "delhi"}
     - action_validate_location
@@ -185,6 +220,13 @@
 ## Generated Story 567857863456356357 
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search
     - utter_ask_location
 * restaurant_search{"location": "delhi"}
@@ -220,6 +262,13 @@
 ## Generated Story 390287473924738294 
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search{"location": "delhi"}
     - slot{"location": "delhi"}
     - action_validate_location
@@ -253,6 +302,13 @@
 ## Generated Story -3830891401256760553 
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * greet
     - utter_greet
 * restaurant_search
@@ -290,6 +346,13 @@
 ## Generated Story 5867629175671392140 
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search{"location": "rishikesh"}
     - slot{"location": "rishikesh"}
     - action_validate_location
@@ -332,6 +395,13 @@
  ## Generated Story 9200166762348421103
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search
     - utter_ask_location
 * restaurant_search{"location": "pune"}
@@ -366,6 +436,13 @@
 ## Generated Story -1403372025300518616
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search{"cuisine": "good"}
     - slot{"cuisine": "good"}
     - utter_ask_location
@@ -406,6 +483,13 @@
 ## Generated Story 6162803233937091025
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search
     - utter_ask_location
 * restaurant_search{"location": "chennai"}
@@ -448,6 +532,13 @@
 ## Generated Story 4008900356050918426
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search
     - utter_ask_location
 * restaurant_search
@@ -486,6 +577,13 @@
 ## Generated Story 8610499701351916020
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search{"cuisine": "chinese", "location": "chennai"}
     - slot{"cuisine": "chinese"}
     - slot{"location": "chennai"}
@@ -521,6 +619,13 @@
 ## Generated Story -4810333301549781269
 * greet
     - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
 * restaurant_search{"cuisine": "south indian"}
     - slot{"cuisine": "south indian"}
     - utter_ask_location
@@ -540,6 +645,145 @@
     - slot{"freetext": "3"}
     - action_restaurant
     - slot{"location": "warangal"}
+    - utter_ask_email_preference
+* deny
+    - utter_goodbye
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
+    - export
+
+## Generated Story to prompt for valid cuisine and clear slots if email is not needed -8504850008108494546
+* greet
+    - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "pune"}
+    - slot{"location": "pune"}
+    - action_validate_location
+    - slot{"location": "pune"}
+    - utter_ask_cuisine
+* restaurant_search
+    - action_validate_cuisine
+    - slot{"cuisine": null}
+    - slot{"freetext": null}
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - action_validate_cuisine
+    - slot{"cuisine": "chinese"}
+    - slot{"freetext": null}
+    - utter_ask_budget
+* restaurant_search{"minbudget": "300", "maxbudget": "700"}
+    - slot{"maxbudget": "700"}
+    - slot{"minbudget": "300"}
+    - action_validate_budget
+    - slot{"minbudget": "300"}
+    - slot{"maxbudget": "700"}
+    - slot{"freetext": null}
+    - action_restaurant
+    - slot{"location": "pune"}
+    - utter_ask_email_preference
+* deny
+    - utter_goodbye
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
+    - export    
+
+## Generated Story 4435934502001847935
+* greet
+    - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
+* restaurant_search{"cuisine": "south indian", "location": "thailand"}
+    - slot{"cuisine": "south indian"}
+    - slot{"location": "thailand"}
+    - action_validate_location
+    - slot{"location": null}
+* restaurant_search{"location": "aurangabad"}
+    - slot{"location": "aurangabad"}
+    - action_validate_location
+    - slot{"location": "aurangabad"}
+    - action_validate_cuisine
+    - slot{"cuisine": "south indian"}
+    - slot{"freetext": null}
+    - utter_ask_budget
+* restaurant_search{"minbudget": "1000"}
+    - slot{"minbudget": "1000"}
+    - action_validate_budget
+    - slot{"minbudget": "1000"}
+    - slot{"maxbudget": null}
+    - slot{"freetext": null}
+    - action_restaurant
+    - utter_ask_email_preference
+* send_email{"emailid": "abc@xyz.com"}
+    - slot{"emailid": "abc@xyz.com"}
+    - action_email
+    - utter_emailed_you
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
+    - utter_goodbye
+    - export
+
+## Generated Story -3088068811948049962
+* greet
+    - utter_greet
+    - action_clear_slots
+    - slot{"location": null}
+    - slot{"cuisine": null}
+    - slot{"minbudget": null}
+    - slot{"maxbudget": null}
+    - slot{"emailid": null}
+    - slot{"freetext": null}
+* restaurant_search{"cuisine": "indian"}
+    - slot{"cuisine": "indian"}
+    - action_validate_cuisine
+    - slot{"cuisine": null}
+    - slot{"freetext": null}
+* restaurant_search{"cuisine": "south indian"}
+    - slot{"cuisine": "south indian"}
+    - action_validate_cuisine
+    - slot{"cuisine": "south indian"}
+    - slot{"freetext": null}
+    - utter_ask_location
+* restaurant_search{"location": "delhi"}
+    - slot{"location": "delhi"}
+    - action_validate_location
+    - slot{"location": "delhi"}
+    - utter_ask_budget
+* restaurant_search{"minbudget": "1000"}
+    - slot{"minbudget": "1000"}
+    - action_validate_budget
+    - slot{"minbudget": "1000"}
+    - slot{"maxbudget": null}
+    - slot{"freetext": null}
+    - action_restaurant
+    - slot{"location": "delhi"}
     - utter_ask_email_preference
 * deny
     - utter_goodbye

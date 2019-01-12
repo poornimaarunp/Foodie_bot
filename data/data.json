@@ -23,7 +23,11 @@
       },
       {
         "name": "freetext",
-        "pattern": "\b[0-9]\b"
+        "pattern": "\b\\w+|\\d+$\b"
+      },
+      {         
+        "name": "chinese",
+        "pattern": "[cC]hines"
       }
     ],
     "entity_synonyms": [
@@ -53,7 +57,8 @@
         "value": "bangalore",
         "synonyms": [
           "bengalore",
-          "bengaluru"
+          "bengaluru",
+          "bangalor"
         ]
       },
       {
@@ -467,6 +472,90 @@
         ]
       },
       {
+        "text": "South Indian",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 0,
+            "end": 12,
+            "value": "South Indian",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "North Indian",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 0,
+            "end": 12,
+            "value": "North Indian",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "Italian",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "Italian",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "Chinese",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "chinese",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "chinese",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "chinese",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "chines",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "chinese",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "Lithuania",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 0,
+            "end": 9,
+            "value": "Lithuania",
+            "entity": "location"
+          }
+        ]
+      },
+      {
         "text": "show me a mexican place in the centre",
         "intent": "restaurant_search",
         "entities": [
@@ -675,8 +764,8 @@
         "entities": [
           {
             "start": 17,
-            "end": 38,
-            "value": "mexican indian fusion",
+            "end": 24,
+            "value": "mexican",
             "entity": "cuisine"
           }
         ]
@@ -1252,6 +1341,18 @@
         ]
       },
       {
+        "text": "find some South Indian restaurants",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 8,
+            "end": 20,
+            "value": "South Indian",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
         "text": "show me south indian restaurants in delhi",
         "intent": "restaurant_search",
         "entities": [
@@ -1302,6 +1403,18 @@
             "end": 7,
             "value": "pune",
             "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "pune",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 0,
+            "end": 4,
+            "value": "pune",
+            "entity": "freetext"
           }
         ]
       }

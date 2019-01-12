@@ -85,7 +85,7 @@ templates:
     - "Sorry, didn’t find any such location. Can you please tell again?"
   utter_wrong_cuisine:
     - "We don't offer the requested cuisine. Please select from the available options"
-    - "Ohho, we only have the following options - chinese, american, italian, american, south indian, north indian. Choose one"
+    - "Ohho, we only have the following options - chinese, american, mexican, italian, south indian, north indian. Choose one"
   utter_ask_email_preference:
     - "Shall I forward you this information in an email?"
     - "Would you like to send this information in an email?"
@@ -95,6 +95,8 @@ templates:
     - "Please share your email address"
   utter_emailed_you:
     - "This information has been emailed to you."
+    - "Sent. Bon Appetit!"
+    - "Sent"
   utter_invalid_emailid:
     - "Please share a valid email"
     - "Email id given is not valid. Please enter a valid email"
